@@ -23,7 +23,7 @@ const ProductDetailPage = () => {
     const handleClick = () => {
         const products: ProductType[] = JSON.parse((localStorage.getItem("carts") as string)) || [];
 
-        const isExistProduct = products.find(c=> c.id === product?.id);
+        const isExistProduct = products.find(c => c.id === product?.id);
 
         if (isExistProduct) {
             const updateData = products.map((c) => {
@@ -32,13 +32,13 @@ const ProductDetailPage = () => {
                         ...c, quantity: c.quantity + 1
                     }
                 }
-                
+
                 return c;
             })
-            localStorage.setItem("carts",JSON.stringify(updateData));
-        }else {
-            const data = [...products, {...product, quantity: 1}];
-            localStorage.setItem("carts",JSON.stringify(data));
+            localStorage.setItem("carts", JSON.stringify(updateData));
+        } else {
+            const data = [...products, { ...product, quantity: 1 }];
+            localStorage.setItem("carts", JSON.stringify(data));
         }
 
         toast("Product added to your bag!")
